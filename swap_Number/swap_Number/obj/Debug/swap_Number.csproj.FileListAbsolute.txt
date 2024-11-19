@@ -1,0 +1,7 @@
+C:\Users\BINITA\Desktop\Net\swap_Number\swap_Number\bin\Debug\swap_Number.exe.config
+C:\Users\BINITA\Desktop\Net\swap_Number\swap_Number\bin\Debug\swap_Number.exe
+C:\Users\BINITA\Desktop\Net\swap_Number\swap_Number\bin\Debug\swap_Number.pdb
+C:\Users\BINITA\Desktop\Net\swap_Number\swap_Number\obj\Debug\swap_Number.csproj.AssemblyReference.cache
+C:\Users\BINITA\Desktop\Net\swap_Number\swap_Number\obj\Debug\swap_Number.csproj.CoreCompileInputs.cache
+C:\Users\BINITA\Desktop\Net\swap_Number\swap_Number\obj\Debug\swap_Number.exe
+C:\Users\BINITA\Desktop\Net\swap_Number\swap_Number\obj\Debug\swap_Number.pdb
