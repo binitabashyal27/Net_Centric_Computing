@@ -1,90 +1,76 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace dotnet
+namespace netcentric
 {
-   
-    internal class BubbleSort
-    {
-       
-        public void Sort(int[] arr)
-        {
-            int n = arr.Length;
-            bool swapped;
-
-           
-            for (int i = 0; i < n - 1; i++)
-            {
-                swapped = false;
-
-                
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (arr[j] > arr[j + 1])  
-                    {
-                        
-                        int temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-
-                        swapped = true;  
-                    }
-                }
-
-                
-                if (!swapped)
-                {
-                    break;
-                }
-            }
-        }
-    }
-
     internal class Program
     {
         static void Main(string[] args)
         {
-           
-            Console.WriteLine("Enter the number of elements in the array:");
-            int n = Convert.ToInt32(Console.ReadLine());
+            // Program to print the calendar (one month) using jagged array
+            Console.WriteLine("Printing the calendar (one month) using jagged array.\n");
 
-            
-            int[] arr = new int[n];
-
-            
-            Console.WriteLine("Enter the elements of the array:");
-
-            for (int i = 0; i < n; i++)
+            // Initialize the calendar using a jagged array
+            // This will be for a 31-day month, but we'll adjust depending on the actual month
+            int[][] calendar =
             {
-                arr[i] = Convert.ToInt32(Console.ReadLine());
+                new int[] {0, 0, 0, 0, 0, 0, 0}, // Week 1 (starting at Friday)
+                new int[] {0, 0, 0, 0, 0, 0, 0}, // Week 2
+                new int[] {0, 0, 0, 0, 0, 0, 0}, // Week 3
+                new int[] {0, 0, 0, 0, 0, 0, 0}, // Week 4
+                new int[] {0, 0, 0, 0, 0, 0, 0}, // Week 5
+                new int[] {0, 0, 0, 0, 0, 0, 0}  // Week 6 (if needed)
+            };
+
+            // Set the start day to Friday (5th index position)
+            int startDay = 5; // Friday
+
+            // Days in the month (this example assumes 31 days)
+            int daysInMonth = 31;
+
+            // Fill the calendar with the days of the month
+            int day = 1;
+            for (int i = 0; i < 6; i++)  // 6 weeks maximum
+            {
+                for (int j = 0; j < 7; j++) // 7 days per week
+                {
+                    // Start filling the calendar once we reach the starting day
+                    if (i == 0 && j < startDay)
+                    {
+                        calendar[i][j] = 0; // Empty slots before the start day
+                    }
+                    else if (day <= daysInMonth)
+                    {
+                        calendar[i][j] = day;
+                        day++;
+                    }
+                    else
+                    {
+                        calendar[i][j] = 0; // Empty slots after the last day
+                    }
+                }
             }
 
-            
-            BubbleSort bubbleSort = new BubbleSort();
+            // Print the calendar header with day names
+            Console.WriteLine("Sun    Mon    Tue    Wed    Thu    Fri    Sat");
 
-           
-            Console.WriteLine("\nArray before sorting:");
-            PrintArray(arr);
-
-           
-            bubbleSort.Sort(arr);
-
-            
-            Console.WriteLine("\nArray after sorting:");
-            PrintArray(arr);
-        }
-
-       
-        static void PrintArray(int[] arr)
-        {
-            foreach (var num in arr)
+            // Print the calendar weeks
+            for (int i = 0; i < calendar.Length; i++)
             {
-                Console.Write(num + " ");
+                for (int j = 0; j < calendar[i].Length; j++)
+                {
+                    if (calendar[i][j] == 0)
+                    {
+                        // If the day is 0 (empty), print a space for alignment
+                        Console.Write("       ");
+                    }
+                    else
+                    {
+                        // Print the day number, aligning them properly
+                        Console.Write(String.Format("{0,-7}", calendar[i][j]));
+                    }
+                }
+                Console.WriteLine(); // New line after each week
             }
-            Console.WriteLine();
         }
     }
 }
